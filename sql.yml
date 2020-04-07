@@ -3,7 +3,6 @@
 - hosts: localhost
   connection: local
   vars:
-    location: eastus
     sqlserver_name: sqlansible"{{ rpfx }}"
     sqldb_name: sqldbtest
     admin_username: admxyz
@@ -12,7 +11,7 @@
     - name: Create resource group
       azure_rm_resourcegroup:
         name: "{{lookup('env', 'resource_group')}}"
-        location: "{{ location }}"
+        location: eastus
     - name: Create SQL Server
       azure_rm_sqlserver:
         name: "{{sqlserver_name}}"
