@@ -2,6 +2,11 @@
 ---
 - hosts: localhost
   connection: local
+  tasks:
+    - name: Prepare random postfix
+      set_fact:
+        rpfx: "{{ 1000 | random }}"
+      run_once: yes
   vars:
     sqlserver_name: sqlansible"{{ rpfx }}"
     sqldb_name: sqldbtest
