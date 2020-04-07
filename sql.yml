@@ -21,6 +21,6 @@
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
-        name: "{{lookup('env', 'resource_grpname')}}"
+        name: "{{lookup('env', 'resource_group')}}"
         location: "{{ location }}"                                      
    
