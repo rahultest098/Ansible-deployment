@@ -2,13 +2,8 @@
 ---
 - hosts: localhost
   connection: local
-  tasks:
-    - name: Prepare random postfix
-      set_fact:
-        rpfx: {{ 1000 | random }}
-      run_once: yes
   vars:
-    sqlserver_name: sqlansible"{{ rpfx }}"
+    sqlserver_name: sqlansiblekat
     sqldb_name: sqldbtest
     admin_username: admxyz
     admin_password: Abcpasswordxyz12!
