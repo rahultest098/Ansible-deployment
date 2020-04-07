@@ -4,7 +4,7 @@
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
-        name: test-rahul
+        name: "{{lookup('env', 'resource_grp_name')}}"
         location: eastus
       register: rg
     - debug:
