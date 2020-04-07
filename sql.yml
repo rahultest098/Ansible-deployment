@@ -5,7 +5,7 @@
   tasks:
     - name: Prepare random postfix
       set_fact:
-        rpfx: "{{ 1000 | random }}"
+        rpfx: {{ 1000 | random }}
       run_once: yes
   vars:
     sqlserver_name: sqlansible"{{ rpfx }}"
