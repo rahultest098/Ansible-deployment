@@ -2,11 +2,24 @@
 ---
 - hosts: localhost
   connection: local
+  vars:
+    location: eastus
+    sqlserver_name: sqlansible{{ rpfx }}
+    sqldb_name: sqldbtest
+    admin_username: admxyz
+    admin_password: Abcpasswordxyz12!
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
         name: "{{lookup('env', 'resource_group')}}"
-        location: eastus
+        location: "{{ location }}"
+    - name: Create SQL Server
+      azure_rm_sqlserver:
+        name: "{{sqlserver_name}}"
+        resource_group: "{{lookup('env', 'resource_group')}}"
+        version: 12.0
+        admin_username: "{{admin_username}}"
+        admin_password: "{{admin_password}}"
       register: rg
     - debug:
         var: rg
