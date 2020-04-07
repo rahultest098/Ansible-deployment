@@ -1,26 +1,14 @@
 
-# This playbook create a SQL server and an instance of SQL Database.
-# Note: Random number is used to set a globally unique name for SQL Server
-
 ---
-
 - hosts: localhost
-  tasks:
-    - name: Prepare random postfix
-      set_fact:
-        rpfx: "{{ 1000 | random }}"
-      run_once: yes
-
-- hosts: localhost
-  vars:
-    location: eastus
-    sqlserver_name: sqlansible{{ rpfx }}
-    sqldb_name: sqldbtest
-    admin_username: admxyz
-    admin_password: Abcpasswordxyz12!
+  connection: local
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
         name: "{{lookup('env', 'resource_group')}}"
-        location: eastus                                      
+        location: eastus
+      register: rg
+    - debug:
+        var: rg
+                                     
    
