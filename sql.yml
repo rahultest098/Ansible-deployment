@@ -19,9 +19,9 @@
     admin_username: admxyz
     admin_password: Abcpasswordxyz12!
   tasks:
-    - name: Create a resource group
+    - name: Create resource group
       azure_rm_resourcegroup:
-        name: "{{lookup('env', 'resource_group')}}"                      
+        name: "{{lookup('env', 'resource_grpname')}}"
         location: "{{ location }}"                                      
     - name: Create SQL Server
       azure_rm_sqlserver:
